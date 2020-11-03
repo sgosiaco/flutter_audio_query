@@ -119,7 +119,6 @@ public class ImageLoader extends AbstractLoader {
                     }
 
                 }
-                Log.i("DBG_TEST", " END WHILE  " );
             }
 
             if (map.isEmpty())
