@@ -115,7 +115,7 @@ public class ImageLoader extends AbstractLoader {
                         break;
                     }
                     catch (IOException ex){
-                        Log.i("DBG_TEST", "A problem here " + ex.getMessage());
+                        //Log.i("DBG_TEST", "A problem here " + ex.getMessage());
                     }
 
                 }
@@ -134,7 +134,7 @@ public class ImageLoader extends AbstractLoader {
             byte[] imageBytes = null;
             try {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                bmp.compress(Bitmap.CompressFormat.PNG, 100, baos);
                 imageBytes = baos.toByteArray();
                 baos.close();
             } catch (Exception ex){
