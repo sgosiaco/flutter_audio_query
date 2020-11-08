@@ -1,7 +1,6 @@
-package boaventura.com.devel.br.flutteraudioquery.sortingtypes;
+package boaventura.com.devel.br.flutteraudioquery.sortingtypes
 
-public enum PlaylistSortType {
-
+enum class PlaylistSortType {
     /**
      * The Default sort order for playlist. DEFAULT value the playlist
      * query will return playlists sorted by alphabetically
@@ -13,6 +12,7 @@ public enum PlaylistSortType {
      *
      */
     NEWEST_FIRST,
+
     /**
      * The most old playlists will come first in playlist queries.
      */

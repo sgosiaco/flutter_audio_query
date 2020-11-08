@@ -1,6 +1,6 @@
-package boaventura.com.devel.br.flutteraudioquery.sortingtypes;
+package boaventura.com.devel.br.flutteraudioquery.sortingtypes
 
-public enum ArtistSortType {
+enum class ArtistSortType {
     DEFAULT,
 
     /**
@@ -31,5 +31,5 @@ public enum ArtistSortType {
      * Return the songs sorted by Ids using the same order that IDs appears
      * in IDs query argument list.
      */
-    CURRENT_IDs_ORDER,
+    CURRENT_IDs_ORDER
 }

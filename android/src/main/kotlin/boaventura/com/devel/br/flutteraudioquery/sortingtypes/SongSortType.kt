@@ -1,11 +1,11 @@
-package boaventura.com.devel.br.flutteraudioquery.sortingtypes;
+package boaventura.com.devel.br.flutteraudioquery.sortingtypes
 
-public enum SongSortType {
+enum class SongSortType {
     DEFAULT,
 
     /**
      * Returns the songs sorted using [composer] property as sort
-     * parameter.*/
+     * parameter. */
     ALPHABETIC_COMPOSER,
 
     /**
@@ -26,7 +26,7 @@ public enum SongSortType {
      * Returns the songs sorted using [year] property as
      * sort parameter. In this case the songs that has more
      * recent year will come first.
-     * */
+     */
     RECENT_YEAR,
 
     /**Returns the songs sorted using [year] property as
@@ -37,20 +37,20 @@ public enum SongSortType {
 
     /**
      * Returns the songs alphabetically sorted using [artist] property as
-     * sort parameter. In this case*/
+     * sort parameter. In this case */
     ALPHABETIC_ARTIST,
 
     /**
      * Returns the songs alphabetically sorted using [album] property as
-     * sort parameter. In this case*/
+     * sort parameter. In this case */
     ALPHABETIC_ALBUM,
 
     /**
-     *  Returns the songs sorted using [track] property as sort param.
-     *  The songs with greater track number will come first.
-     *  NOTE: In Android platform [track] property number encodes both the track
-     *  number and the disc number. For multi-disc sets, this number will be 1xxx
-     *  for tracks on the first disc, 2xxx for tracks on the second disc, etc.
+     * Returns the songs sorted using [track] property as sort param.
+     * The songs with greater track number will come first.
+     * NOTE: In Android platform [track] property number encodes both the track
+     * number and the disc number. For multi-disc sets, this number will be 1xxx
+     * for tracks on the first disc, 2xxx for tracks on the second disc, etc.
      */
     GREATER_TRACK_NUMBER,
 
@@ -66,7 +66,7 @@ public enum SongSortType {
     /**
      * Return the songs sorted using [display_name] property as sort param.
      * Is a good option to used when desired have the original album songs order.
-     * */
+     */
     DISPLAY_NAME,
 
     /**
