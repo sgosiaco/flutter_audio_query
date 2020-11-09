@@ -5,7 +5,6 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.provider.MediaStore;
 import android.util.Log;
 
@@ -19,8 +18,6 @@ import boaventura.com.devel.br.flutteraudioquery.sortingtypes.SongSortType;
 import io.flutter.plugin.common.MethodChannel;
 
 public class SongLoader extends AbstractLoader {
-
-    private static final String TAG = "MDBG";
 
     private static final int QUERY_TYPE_GENRE_SONGS = 0x01;
     private static final int QUERY_TYPE_ALBUM_SONGS = 0x02;
@@ -183,7 +180,7 @@ public class SongLoader extends AbstractLoader {
         String[] values;
 
         if ( (songIds != null) && (songIds.size() > 0) ){
-             values = songIds.toArray(new String[songIds.size()] );
+             values = songIds.toArray(new String[0]);
              this.
              createLoadTask(result, SONG_PROJECTION[0] + " =?", values, prepareIDsSongsSortOrder(songIds), QUERY_TYPE_DEFAULT)
                      .execute();
@@ -304,7 +301,7 @@ public class SongLoader extends AbstractLoader {
         }
 
         if (ids.size() > 1){
-            selectionArgs = ids.toArray( new String[ ids.size() ]);
+            selectionArgs = ids.toArray(new String[0]);
 
             if(sortType == SongSortType.CURRENT_IDs_ORDER)
                 sortOrder = prepareIDsSongsSortOrder( ids );
@@ -334,7 +331,7 @@ public class SongLoader extends AbstractLoader {
     private static class SongTaskLoad extends AbstractLoadTask< List< Map<String,Object> > > {
         private MethodChannel.Result m_result;
         private ContentResolver m_resolver;
-        private int m_queryType;
+        private final int m_queryType;
 
         /**
          *

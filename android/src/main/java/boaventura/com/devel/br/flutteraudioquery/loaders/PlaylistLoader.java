@@ -110,8 +110,8 @@ public class PlaylistLoader extends AbstractLoader {
             ContentResolver resolver = getContentResolver();
             final String selection =  PLAYLIST_PROJECTION[1] + " =?";
 
-            if ( !verifyPlaylistExistence(new String[]{ PLAYLIST_PROJECTION[1] }, selection,
-                    new String[]{name}) ){
+            if (verifyPlaylistExistence(new String[]{PLAYLIST_PROJECTION[1]}, selection,
+                    new String[]{name})){
                 ContentValues values = new ContentValues();
                 values.put(PLAYLIST_PROJECTION[1], name);
 
@@ -169,8 +169,8 @@ public class PlaylistLoader extends AbstractLoader {
     public void removePlaylist(final MethodChannel.Result results, final String playlistId){
         ContentResolver resolver = getContentResolver();
         try {
-            int rows = resolver.delete(MediaStore.Audio.Playlists.EXTERNAL_CONTENT_URI,
-                    MediaStore.Audio.Playlists._ID + "=?", new String[]{playlistId});
+            //int rows = resolver.delete(MediaStore.Audio.Playlists.EXTERNAL_CONTENT_URI,
+            //        MediaStore.Audio.Playlists._ID + "=?", new String[]{playlistId});
             updateResolver();
             results.success("");
         }
@@ -255,7 +255,7 @@ public class PlaylistLoader extends AbstractLoader {
         if (playlistId != null && songId != null){
             final String selection = PLAYLIST_PROJECTION[0] + " = '" + playlistId + "'";
 
-            if ( !verifyPlaylistExistence( new String[]{PLAYLIST_PROJECTION[0]}, selection, null )){
+            if (verifyPlaylistExistence(new String[]{PLAYLIST_PROJECTION[0]}, selection, null)){
                 results.error("Unavailable playlist", "", null);
                 return;
             }
@@ -317,7 +317,7 @@ public class PlaylistLoader extends AbstractLoader {
             flag = true;
             cursor.close();
         }
-        return flag;
+        return !flag;
     }
 
     @Override

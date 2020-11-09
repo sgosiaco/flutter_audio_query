@@ -123,7 +123,7 @@ public class ArtistLoader extends AbstractLoader {
         }
 
         if (ids.size() > 1){
-            selectionArgs = ids.toArray( new String[ ids.size() ]);
+            selectionArgs = ids.toArray(new String[0]);
 
             if(sortType == ArtistSortType.CURRENT_IDs_ORDER)
                 sortOrder = prepareIDsSortOrder( ids );
@@ -231,7 +231,7 @@ public class ArtistLoader extends AbstractLoader {
     static class ArtistLoadTask extends AbstractLoadTask<List<Map<String, Object>>> {
         private ContentResolver m_resolver;
         private MethodChannel.Result m_result;
-        private int m_queryType;
+        private final int m_queryType;
 
 
         ArtistLoadTask(final MethodChannel.Result result, final ContentResolver resolver, final String selection,

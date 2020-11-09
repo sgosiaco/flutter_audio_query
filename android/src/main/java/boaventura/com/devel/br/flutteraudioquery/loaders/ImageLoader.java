@@ -64,8 +64,8 @@ public class ImageLoader extends AbstractLoader {
     private static class ImageLoadTask extends AbstractLoadTask< Map<String,Object> > {
         private MethodChannel.Result m_result;
         private ContentResolver m_resolver;
-        private int m_queryType;
-        private Size size;
+        private final int m_queryType;
+        private final Size size;
         private static final String key = "image";
 
 

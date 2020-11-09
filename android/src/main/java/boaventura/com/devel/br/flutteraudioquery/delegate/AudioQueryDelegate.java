@@ -9,6 +9,8 @@ import android.util.Log;
 import android.util.Size;
 
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -293,7 +295,7 @@ public class AudioQueryDelegate implements PluginRegistry.RequestPermissionsResu
      */
     private void handleReadOnlyMethods(MethodCall call, MethodChannel.Result result){
 
-        List<String> idList = null;
+        List<String> idList;
         switch (call.method){
 
             // artists calls section
@@ -418,7 +420,11 @@ public class AudioQueryDelegate implements PluginRegistry.RequestPermissionsResu
                     m_imageLoader.searchArtworkBytes(result, resourceType, resourceId,
                             new Size(width, height));
                 }
-                else result.notImplemented();
+                else {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("image", null);
+                    result.success(map);
+                }
 
                 break;
 
@@ -482,10 +488,7 @@ public class AudioQueryDelegate implements PluginRegistry.RequestPermissionsResu
     }
 
     private boolean canIbeDependency(MethodCall call, MethodChannel.Result result){
-        if ( !setPendingMethodAndCall(call, result) ){
-            return false;
-        }
-        return true;
+        return setPendingMethodAndCall(call, result);
     }
 
     private boolean setPendingMethodAndCall(MethodCall call, MethodChannel.Result result){
@@ -508,9 +511,9 @@ public class AudioQueryDelegate implements PluginRegistry.RequestPermissionsResu
                 "There is some result to be delivered", null);
     }
 
-    private void finishWithError(String errorKey, String errorMsg, MethodChannel.Result result){
+    private void finishWithError(String errorMsg, MethodChannel.Result result){
         clearPendencies();
-        result.error(errorKey, errorMsg, null);
+        result.error(AudioQueryDelegate.ERROR_CODE_PERMISSION_DENIED, errorMsg, null);
     }
 
     @Override
@@ -526,7 +529,7 @@ public class AudioQueryDelegate implements PluginRegistry.RequestPermissionsResu
                     clearPendencies();
                 }
                 else {
-                    finishWithError(ERROR_CODE_PERMISSION_DENIED,
+                    finishWithError(
                             "READ EXTERNAL PERMISSION DENIED", m_pendingResult);
                 }
                 break;
@@ -539,7 +542,7 @@ public class AudioQueryDelegate implements PluginRegistry.RequestPermissionsResu
                 }
 
                 else {
-                    finishWithError(ERROR_CODE_PERMISSION_DENIED,
+                    finishWithError(
                             "WRITE EXTERNAL PERMISSION DENIED", m_pendingResult);
                 }
                 break;

@@ -226,7 +226,7 @@ public class FlutterAudioQueryPlugin implements MethodCallHandler, FlutterPlugin
       }
     }
 
-    private class LifeCycleObserver
+    private static class LifeCycleObserver
             implements Application.ActivityLifecycleCallbacks, DefaultLifecycleObserver {
 
         private final Activity thisActivity;

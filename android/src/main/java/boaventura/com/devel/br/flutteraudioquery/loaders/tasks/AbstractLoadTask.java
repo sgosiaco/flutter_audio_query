@@ -66,7 +66,7 @@ public abstract class AbstractLoadTask<T> extends AsyncTask<Void, Void, T>
      */
     protected String createMultipleValueSelectionArgs( final String column, final String[] params){
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(column + " IN(?");
+        stringBuilder.append(column).append(" IN(?");
 
         for (int i = 0; i < (params.length - 1); i++)
             stringBuilder.append(",?");

@@ -13,7 +13,6 @@ import java.util.Map;
 
 import boaventura.com.devel.br.flutteraudioquery.loaders.tasks.AbstractLoadTask;
 import boaventura.com.devel.br.flutteraudioquery.sortingtypes.GenreSortType;
-import boaventura.com.devel.br.flutteraudioquery.sortingtypes.SongSortType;
 import io.flutter.plugin.common.MethodChannel;
 
 public class GenreLoader extends AbstractLoader {
@@ -110,7 +109,7 @@ public class GenreLoader extends AbstractLoader {
                                                      String sortOrder) {
 
             List<Map<String, Object>> dataList= new ArrayList<>();
-            Cursor genreCursor = null;
+            Cursor genreCursor;
 
             try {
                 genreCursor = m_resolver.query(MediaStore.Audio.Genres.EXTERNAL_CONTENT_URI,

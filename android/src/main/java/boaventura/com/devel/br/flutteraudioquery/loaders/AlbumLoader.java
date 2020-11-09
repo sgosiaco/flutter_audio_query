@@ -100,7 +100,7 @@ public class AlbumLoader extends AbstractLoader {
         }
 
         if (ids.size() > 1){
-            selectionArgs = ids.toArray( new String[ ids.size() ]);
+            selectionArgs = ids.toArray(new String[0]);
 
             if(sortType == AlbumSortType.CURRENT_IDs_ORDER)
                 sortOrder = prepareIDsSortOrder( ids );
@@ -228,7 +228,7 @@ public class AlbumLoader extends AbstractLoader {
 
         private ContentResolver m_resolver;
         private MethodChannel.Result m_result;
-        private int m_queryType;
+        private final int m_queryType;
 
         private AlbumLoadTask(final MethodChannel.Result result, ContentResolver resolver,
                               final String selection, final String[] selectionArgs,
